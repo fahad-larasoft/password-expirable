@@ -1,0 +1,52 @@
+{
+    "name": "larasoft/password-expirable",
+    "type": "library",
+    "description": "It handles password expiry of users.",
+    "keywords": [
+        "Larasoft",
+        "PasswordExpirable",
+        "Laravel password expiry"
+    ],
+    "homepage": "https://github.com/fahad-larasoft/password-expirable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fahad Ali",
+            "email": "fahad@larasoft.io",
+            "homepage": "larasoft.io",
+            "role": "Lead Developer"
+        }
+    ],
+    "require": {
+        "illuminate/support": "5.0.* || 5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.*",
+        "php" : "~5.6|~7.0",
+        "schuppo/password-strength" : "~1.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : ">=5.4.3",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Larasoft\\PasswordExpiry\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Larasoft\\PasswordExpiry\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "check-style": "phpcs -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests",
+        "fix-style": "phpcbf -p --standard=PSR2 --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 src tests"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
