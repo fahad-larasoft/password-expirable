@@ -1,43 +1,83 @@
-# :package_name
+# Password Expiry for Laravel 5.x
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
-[![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
-[![Quality Score][ico-code-quality]][link-code-quality]
-[![Total Downloads][ico-downloads]][link-downloads]
-
-**Note:** Replace ```:author_name``` ```:author_username``` ```:author_website``` ```:author_email``` ```:vendor``` ```:package_name``` ```:package_description``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line. You can run `$ php prefill.php` in the command line to make all replacements at once. Delete the file prefill.php as well.
-
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
-
-## Structure
-
-If any of the following are applicable to your project, then the directory structure should follow industry best practices by being named the following.
-
-```
-bin/        
-config/
-src/
-tests/
-vendor/
-```
-
+Password Strength has following characteristics:
+- It will allow your to set Expiry time of user password and send them reset emails.
+- It does support Laravel 5.1.* - 5.5.*
 
 ## Install
 
 Via Composer
 
 ``` bash
-$ composer require :vendor/:package_name
+$ composer require larasoft/password-expirable
 ```
+
+You must include the service provider in config/app.php:
+
+```php
+
+'providers' => [
+    ...
+    Larasoft\PasswordExpiry\PasswordExpiryServiceProvider::class,
+],
+```
+
+You need to migrate you database.
+
+```bash
+php artisan migrate
+```
+
+You can publish the config file with:
+
+```bash
+php artisan vendor:publish --provider="Larasoft\PasswordExpiry\PasswordExpiryServiceProvider" --tag="config"
+```
+
+When published, the `config/password-expiry.php` config file contains:
+
+```php
+return [
+
+      // # of Days: After which user password gets expired and user should receive password reset email/notification
+      'expiry_days' => 2,
+  
+      // Expiry message to send in password email/notification
+      'expiry_message' => 'It has been over :number days since you reset your password. Please update it now.',
+  
+      'strong_password_rules' => 'case_diff|numbers|letters|symbols'
+];
+```
+
+You can change it according to your needs. 
 
 ## Usage
 
+* Include Following trait in User Model 
 ``` php
-$skeleton = new League\Skeleton();
-echo $skeleton->echoPhrase('Hello, League!');
+use PasswordExpirable;
+```
+
+
+* You can get the datetime Carbon instance of "when the current password was set on user object"
+``` php
+$user->getCurrentPasswordSetTime();
+```
+
+
+* You can check if user password is expired?
+``` php 
+$user->isPasswordExpired();
+```
+
+* You can protect your routes from user with expired password 
+by adding following middleware into your app/Http/Kernel.php and
+applying it onto your required routes. You can change the name 'check-password-expired' how you like.
+``` php 
+protected $routeMiddleware = [
+    ...
+    'check-password-expired' => CheckPasswordExpired::class
+]
 ```
 
 ## Change log
