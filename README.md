@@ -1,8 +1,9 @@
-# Password Expiry for Laravel 5.x
+# Password Expiry for Laravel 9.x | 10.x
 
 Password Strength has following characteristics:
 - It will allow your to set Expiry time of user password and send them reset emails.
-- It does support Laravel 5.1.* - 5.5.*
+- Latest Version 2.0 does support Laravel 9.x & 10.x
+- Version 1.0 for Laravel 5.1.x - 5.5.x
 
 ## Install
 
@@ -100,7 +101,7 @@ If you discover any security related issues, please email :author_email instead 
 
 ## Credits
 
-- [:author_name][link-author]
+- [Fahad Ali][link-author]
 - [All Contributors][link-contributors]
 
 ## License
@@ -119,5 +120,5 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-scrutinizer]: https://scrutinizer-ci.com/g/:vendor/:package_name/code-structure
 [link-code-quality]: https://scrutinizer-ci.com/g/:vendor/:package_name
 [link-downloads]: https://packagist.org/packages/:vendor/:package_name
-[link-author]: https://github.com/:author_username
-[link-contributors]: ../../contributors
+[link-author]: https://www.linkedin.com/in/fahad3
+[link-contributors]: https://www.linkedin.com/in/fahad3/
