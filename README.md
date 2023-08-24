@@ -10,13 +10,13 @@ Password Strength has following characteristics:
 Via Composer (v1.0)
 
 ``` bash
-$ composer require larasoft/password-expirable
+$ composer require larasoft/password-expirable:1.0
 ```
 
 Via Composer (v2.0)
 
 ``` bash
-$ composer require larasoft/password-expirable:2.0
+$ composer require larasoft/password-expirable
 ```
 
 You must include the service provider in config/app.php:
