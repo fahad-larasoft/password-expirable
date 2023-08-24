@@ -2,12 +2,18 @@
 
 Password Strength has following characteristics:
 - It will allow your to set Expiry time of user password and send them reset emails.
-- Latest Version 2.0 does support Laravel 9.x & 10.x
 - Version 1.0 for Laravel 5.1.x - 5.5.x
+- Version 2.0 does support Laravel 9.x & 10.x
 
 ## Install
 
-Via Composer
+Via Composer (v1.0)
+
+``` bash
+$ composer require larasoft/password-expirable:1.0
+```
+
+Via Composer (v2.0)
 
 ``` bash
 $ composer require larasoft/password-expirable
@@ -50,11 +56,11 @@ return [
 ];
 ```
 
-You can change it according to your needs. 
+You can change it according to your needs.
 
 ## Usage
 
-* Include Following trait in User Model 
+* Include Following trait in User Model
 ``` php
 use PasswordExpirable;
 ```
@@ -71,9 +77,9 @@ $user->getCurrentPasswordSetTime();
 $user->isPasswordExpired();
 ```
 
-* You can protect your routes from user with expired password 
-by adding following middleware into your app/Http/Kernel.php and
-applying it onto your required routes. You can change the name 'check-password-expired' how you like.
+* You can protect your routes from user with expired password
+  by adding following middleware into your app/Http/Kernel.php and
+  applying it onto your required routes. You can change the name 'check-password-expired' how you like.
 ``` php 
 protected $routeMiddleware = [
     ...
