@@ -18,9 +18,9 @@
         }
     ],
     "require": {
-        "illuminate/support": "5.0.* || 5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.*",
-        "php" : "~5.6|~7.0",
-        "schuppo/password-strength" : "~1.5"
+        "illuminate/support": "^9.18|^10.0",
+        "php" : "^8.0",
+        "schuppo/password-strength" : "~2.7"
     },
     "require-dev": {
         "phpunit/phpunit" : ">=5.4.3",
